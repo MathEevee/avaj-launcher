@@ -1,5 +1,7 @@
 package fr.mathilde.Aircraft;
 
+import fr.mathilde.Exception.InvalidLessHeight;
+
 public abstract class Aircraft extends Flyable {
     protected Long id;
     protected String name;
@@ -12,8 +14,6 @@ public abstract class Aircraft extends Flyable {
         this.coordinates = p_coordinates;
     }
 
-
-
     @Override
-    public abstract void updateConditions();
+    public abstract void updateConditions() throws InvalidLessHeight;
 }
