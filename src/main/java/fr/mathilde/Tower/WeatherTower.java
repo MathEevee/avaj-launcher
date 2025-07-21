@@ -1,7 +1,6 @@
 package fr.mathilde.Tower;
 
 import fr.mathilde.Aircraft.Coordinates;
-import fr.mathilde.Aircraft.Flyable;
 
 public class WeatherTower extends Tower {
     public WeatherTower() {

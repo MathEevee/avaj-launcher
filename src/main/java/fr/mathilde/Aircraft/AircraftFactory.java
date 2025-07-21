@@ -1,4 +1,5 @@
 package fr.mathilde.Aircraft;
+import fr.mathilde.Exception.InvalidAircraft;
 
 public class AircraftFactory {
     private static long id = 0;
@@ -7,7 +8,7 @@ public class AircraftFactory {
         return ++id;
     }
 
-    public static Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
+    public static Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) throws InvalidAircraft {
         Flyable flyable;
         long new_id = nextId();
         switch (p_type) {
@@ -21,7 +22,7 @@ public class AircraftFactory {
                 flyable = new JetPlane(new_id, p_name, p_coordinates);
                 break;
             default:
-                flyable = null;
+                return null;
         }
         return flyable;
     }
