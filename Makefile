@@ -1,7 +1,6 @@
 SRC_DIR := ./src/main/java
 OUT_DIR := out
 
-# Fichiers source Java (explicitement listés)
 SOURCES := \
 	$(SRC_DIR)/fr/mathilde/Aircraft/Aircraft.java \
 	$(SRC_DIR)/fr/mathilde/Aircraft/AircraftFactory.java \
@@ -18,10 +17,8 @@ SOURCES := \
 	$(SRC_DIR)/fr/mathilde/Tower/WeatherProvider.java \
 	$(SRC_DIR)/fr/mathilde/Tower/WeatherTower.java
 
-# Classe principale à exécuter
 MAIN_CLASS := fr.mathilde.Main
 
-# Argument du programme
 SCENARIO := scenario.txt
 
 all:
