@@ -2,6 +2,8 @@ package fr.mathilde;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import fr.mathilde.Aircraft.AircraftFactory;
@@ -15,7 +17,7 @@ import fr.mathilde.Tower.WeatherTower;
 
 public class Main {
     static int rec;
-    static String regex = "[\\s]";
+    static String regex = "[\s]";
 
     static int atoi(String number, long line) throws InvalidValue {
         int result = 0;
@@ -73,7 +75,7 @@ public class Main {
                     throw new InvalidAircraft("Error with line " + i + " : " + myArray[0]);
                 }
                 aircraft.registerTower(weatherTower);
-                weatherTower.register(aircraft);
+//                weatherTower.register(aircraft);
                 i++;
             }
             myReader.close();
@@ -84,22 +86,25 @@ public class Main {
             File myObj = new File("/home/matde-ol/IdeaProjects/avaj-launcher/src/main/java/fr/mathilde/scenario.txt");
             Scanner myReader = new Scanner(myObj);
             parsing(myReader, weatherTower);
+            PrintStream fileOut = new PrintStream(new FileOutputStream("simulation.txt", false));
+            System.setOut(fileOut);
+            weatherTower.getTower();
             for (int i = 0; i < rec; i++) {
                 weatherTower.changeWeather();
-        }
-
+            }
+            System.out.close();
         } catch (InvalidValue e) {
-            System.err.println("Invalid input: " + e.getMessage());
+            System.out.println("Invalid input: " + e.getMessage());
         } catch (RuntimeException e) {
-            System.err.println("Runtime exception: " + e.getMessage());
+            System.out.println("Runtime exception: " + e.getMessage());
         } catch (InvalidAircraft e) {
-            System.err.println("Invalid Aircraft: " + e.getMessage());
+            System.out.println("Invalid Aircraft: " + e.getMessage());
         }
         catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
+            System.out.println("File not found: " + e.getMessage());
         }
         catch (Exception e) {
-            System.err.println("Invalid data in file: " + e.getMessage());
+            System.out.println("Invalid data in file: " + e.getMessage());
         }
     }
 }

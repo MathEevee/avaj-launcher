@@ -15,11 +15,20 @@ public class Tower {
 
     public void register(Flyable p_flyable){
         this.observers.add(p_flyable);
-        System.out.println("Tower says: " + p_flyable.getClass().getSimpleName() + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ")" + " registered to weather tower.");
     }
 
     public void unregister(Flyable p_flyable) {
         this.observers.remove(p_flyable);
+    }
+
+    public void getTower() {
+        for (Flyable p_flyable : this.observers)
+        {
+            System.out.println("Tower says: " + p_flyable.getClass().getSimpleName()
+                    + "#" + p_flyable.getName() + "("
+                    + Long.toString(p_flyable.getId()) + ")"
+                    + " registered to weather tower.");
+        }
     }
 
     protected void conditionChange(){
@@ -27,7 +36,8 @@ public class Tower {
         for (Flyable observer : observers) {
             try {
                 observer.updateConditions();
-            } catch (Exception InvalidLessHeight) {
+            }
+            catch (Exception InvalidLessHeight) {
                 System.out.println(InvalidLessHeight.getMessage());
                 removed.add(observer);
             }

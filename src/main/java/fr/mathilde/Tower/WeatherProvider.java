@@ -22,8 +22,7 @@ public class WeatherProvider {
     public String getCurrentWeather(Coordinates p_coordinates) {
         int hash = Objects.hash(
                 p_coordinates.getLongitude() / 10,
-                p_coordinates.getLatitude() / 10,
-                p_coordinates.getHeight() / 10
+                p_coordinates.getLatitude() / 10
         );
         int index = Math.abs((hash + rand.nextInt()) % weather.length);
         return weather[index];
