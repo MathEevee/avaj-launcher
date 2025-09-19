@@ -3,8 +3,8 @@ package fr.mathilde.Tower;
 import fr.mathilde.Aircraft.Flyable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
 
 public class Tower {
     private final List<Flyable> observers;

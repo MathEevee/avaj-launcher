@@ -75,15 +75,19 @@ public class Main {
                     throw new InvalidAircraft("Error with line " + i + " : " + myArray[0]);
                 }
                 aircraft.registerTower(weatherTower);
-//                weatherTower.register(aircraft);
                 i++;
             }
             myReader.close();
     }
     public static void main(String[] args) {
         try {
+            if (args.length != 1)
+            {
+                System.out.println("Error : Invalid Arguments");
+                return ;
+            }
             WeatherTower weatherTower = new WeatherTower();
-            File myObj = new File("/home/matde-ol/IdeaProjects/avaj-launcher/src/main/java/fr/mathilde/scenario.txt");
+            File myObj = new File(args[0]);
             Scanner myReader = new Scanner(myObj);
             parsing(myReader, weatherTower);
             PrintStream fileOut = new PrintStream(new FileOutputStream("simulation.txt", false));
